@@ -75,14 +75,33 @@ def record(seconds):
     wf.close()
 
 
-def convert():
+def convert(cuerda):
     srate2, data2 = wav.read('output.wav')
     X = fft(data2)
     N = len(data2)
     X_mag = abs(X) * 2.0 / N
     freq = fftfreq(len(data2), 1.0 / srate2)
-    #plot (freq, X_mag)
-    #show()
+    if (cuerda==1):
+        X1 = where(abs(freq)>190 , X, 0)
+        X2 = where(abs(freq)<500 , X1, 0)
+    elif (cuerda == 2):
+        X1 = where(abs(freq)>140 , X, 0)
+        X2 = where(abs(freq)<400 , X1, 0)
+    elif (cuerda == 3):
+        X1 = where(abs(freq)>110 , X, 0)
+        X2 = where(abs(freq)<310 , X1, 0)
+    elif (cuerda == 4):
+        X1 = where(abs(freq)>90 , X, 0)
+        X2 = where(abs(freq)<200 , X1, 0)
+    elif (cuerda == 5):
+        X1 = where(abs(freq)>50 , X, 0)
+        X2 = where(abs(freq)<190 , X1, 0)
+    elif (cuerda == 6):
+        X1 = where(abs(freq)>10 , X, 0)
+        X2 = where(abs(freq)<150 , X1, 0)
+    X_mag = abs(X2)*2.0/N
+    plot (freq, X_mag)
+    show()
     return freq, X_mag
 
 
@@ -98,7 +117,7 @@ def afinador(cuerda):
     frecuenciaTeorica = notasGuitarra[cuerda]
     print "Toque la cuerda en este momento"
     record(3)
-    f, mag = convert()
+    f, mag = convert(cuerda)
     frecuenciaReal = getFreq(f, mag)
     if (frecuenciaReal - frecuenciaTeorica) < -3:
         return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda es muy baja"
