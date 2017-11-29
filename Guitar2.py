@@ -35,7 +35,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.gridFrame = QtGui.QFrame(self.centralwidget)
         self.gridFrame.setGeometry(QtCore.QRect(90, 100, 961, 391))
         self.gridFrame.setStyleSheet(_fromUtf8("background-color: rgb(214, 214, 214);\n"
-"background-image: url(:/newPrefix/D:/UVG/g70.png);"))
+"background-image: url(g70.png);"))
         self.gridFrame.setObjectName(_fromUtf8("gridFrame"))
         self.gridLayout = QtGui.QGridLayout(self.gridFrame)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
@@ -124,19 +124,19 @@ class Ui_MainWindow(QtGui.QMainWindow):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.label.setText(_translate("MainWindow", "Guitar - Tuner", None))
-        self.pushButton.setText(_translate("MainWindow", "E4", None))
+        self.pushButton.setText(_translate("MainWindow", "1", None))
         self.pushButton.clicked.connect(self.handleButton1)
-        self.pushButton_2.setText(_translate("MainWindow", "B3", None))
+        self.pushButton_2.setText(_translate("MainWindow", "2", None))
         self.pushButton_2.clicked.connect(self.handleButton2)
-        self.pushButton_3.setText(_translate("MainWindow", "G3", None))
+        self.pushButton_3.setText(_translate("MainWindow", "3", None))
         self.pushButton_3.clicked.connect(self.handleButton3)
-        self.pushButton_4.setText(_translate("MainWindow", "D3", None))
+        self.pushButton_4.setText(_translate("MainWindow", "4", None))
         self.pushButton_4.clicked.connect(self.handleButton4)
-        self.pushButton_5.setText(_translate("MainWindow", "A2", None))
+        self.pushButton_5.setText(_translate("MainWindow", "5", None))
         self.pushButton_5.clicked.connect(self.handleButton5)
-        self.pushButton_6.setText(_translate("MainWindow", "E2", None))
+        self.pushButton_6.setText(_translate("MainWindow", "6", None))
         self.pushButton_6.clicked.connect(self.handleButton6)
-        self.label_2.setText(_translate("MainWindow", "Presione uno de los botones para simular una cuerda", None))
+        self.label_2.setText(_translate("MainWindow", "Seleccione el numero de la cuerda a afinar: ", None))
         self.label_3.setText(_translate("MainWindow", "50                 200                                  500                      700                                  1000", None))
         self.label_4.setText(_translate("MainWindow", "Frecuencia actual de la cuerda:", None))
         self.label_5.setText(_translate("MainWindow", "Frecuencia para estar afinada:", None))
@@ -152,6 +152,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
                                       str(d))
     def handleButton2(self):
         a, b, c, d = afinador(2)
+        self.horizontalSlid
         self.horizontalSlider.setProperty("value", int(a))
         self.lcdNumber_2.display(int(b))
         self.lcdNumber_3.display(int(c))
@@ -201,4 +202,3 @@ if __name__ == '__main__':
     mainwin = MyForm()
     mainwin.show()
     sys.exit(app.exec_())
-

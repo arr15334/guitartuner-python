@@ -81,7 +81,8 @@ def convert():
     N = len(data2)
     X_mag = abs(X) * 2.0 / N
     freq = fftfreq(len(data2), 1.0 / srate2)
-    # plot (freq, X_mag)
+    plot (freq, X_mag)
+    show()
     return freq, X_mag
 
 
@@ -100,8 +101,8 @@ def afinador(cuerda):
     f, mag = convert()
     frecuenciaReal = getFreq(f, mag)
     if (frecuenciaReal - frecuenciaTeorica) < -1:
-        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda es muy alta"
-    elif (frecuenciaReal - frecuenciaTeorica) > 1:
         return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda es muy baja"
+    elif (frecuenciaReal - frecuenciaTeorica) > 1:
+        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda es muy alta"
     else:
         return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda esta perfecta"
