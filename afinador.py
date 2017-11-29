@@ -100,8 +100,8 @@ def convert(cuerda):
         X1 = where(abs(freq)>10 , X, 0)
         X2 = where(abs(freq)<150 , X1, 0)
     X_mag = abs(X2)*2.0/N
-    plot (freq, X_mag)
-    show()
+   # plot (freq, X_mag)
+    #show()
     return freq, X_mag
 
 
@@ -113,7 +113,6 @@ def getFreq(frecuencia, magnitud):
 
 
 def afinador(cuerda):
-    #cuerda = input("Seleccione la cuerda que desea afinar ")
     frecuenciaTeorica = notasGuitarra[cuerda]
     print "Toque la cuerda en este momento"
     record(3)

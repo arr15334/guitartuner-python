@@ -150,23 +150,21 @@ class Ui_MainWindow(QtGui.QMainWindow):
 
 
     def handleButton1(self):
-        self.label_6.setText(_translate("MainWindow", "Recording...", None))
-        time.sleep(3)
-        """
         QtGui.QMessageBox.information(self,
                                       'Message',
                                       "En este instante el sonido sera grabado y procesado")
-        """
         a,b,c,d = afinador(1)
         time.sleep(3)
         self.horizontalSlider.setProperty("value", int(a))
         self.lcdNumber_2.display(int(b))
         self.lcdNumber_3.display(int(c))
-        #self.label_6.setText(_translate("MainWindow", str(d), None))
         QtGui.QMessageBox.information(self,
                                       'Message',
                                       str(d))
     def handleButton2(self):
+        QtGui.QMessageBox.information(self,
+                                      'Message',
+                                      "En este instante el sonido sera grabado y procesado")
         a, b, c, d = afinador(2)
         self.horizontalSlid
         self.horizontalSlider.setProperty("value", int(a))
@@ -176,6 +174,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
                                       'Message',
                                       str(d))
     def handleButton3(self):
+        QtGui.QMessageBox.information(self,
+                                      'Message',
+                                      "En este instante el sonido sera grabado y procesado")
         a, b, c, d = afinador(3)
         self.horizontalSlider.setProperty("value", int(a))
         self.lcdNumber_2.display(int(b))
@@ -184,6 +185,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
                                       'Message',
                                       str(d))
     def handleButton4(self):
+        QtGui.QMessageBox.information(self,
+                                      'Message',
+                                      "En este instante el sonido sera grabado y procesado")
         a, b, c, d = afinador(4)
         self.horizontalSlider.setProperty("value", int(a))
         self.lcdNumber_2.display(int(b))
@@ -192,6 +196,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
                                       'Message',
                                       str(d))
     def handleButton5(self):
+        QtGui.QMessageBox.information(self,
+                                      'Message',
+                                      "En este instante el sonido sera grabado y procesado")
         a, b, c, d = afinador(5)
         self.horizontalSlider.setProperty("value", int(a))
         self.lcdNumber_2.display(int(b))
@@ -200,6 +207,9 @@ class Ui_MainWindow(QtGui.QMainWindow):
                                       'Message',
                                       str(d))
     def handleButton6(self):
+        QtGui.QMessageBox.information(self,
+                                      'Message',
+                                      "En este instante el sonido sera grabado y procesado")
         a, b, c, d = afinador(6)
         self.horizontalSlider.setProperty("value", int(a))
         self.lcdNumber_2.display(int(b))
