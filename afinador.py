@@ -2,6 +2,7 @@ import pyaudio
 import wave
 from pylab import *
 import scipy.io.wavfile as wav
+
 """
 notas_Hz = {'A': 440.00, # la
             'B': 493.88, # si
@@ -19,12 +20,12 @@ notas_Hz = {'A': 440.00, # la
             'DO': 523.25, # do octava
             'P': 0.0} 
 """
-notasGuitarra = {1 : 329.63,
-2 : 246.94,
-3 : 196.0,
-4 : 146.83,
-5 : 110.0,
-6 : 82.41}
+notasGuitarra = {1: 329.63,
+                 2: 246.94,
+                 3: 196.0,
+                 4: 146.83,
+                 5: 110.0,
+                 6: 82.41}
 
 """
 'E4' : 329.63,
@@ -34,6 +35,8 @@ notasGuitarra = {1 : 329.63,
 'A2' : 110.0,
 'E2' : 82.41
 """
+
+
 def record(seconds):
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
@@ -41,77 +44,64 @@ def record(seconds):
     RATE = 44100
     RECORD_SECONDS = seconds
     WAVE_OUTPUT_FILENAME = "output.wav"
-    
+
     p = pyaudio.PyAudio()
-    
+
     stream = p.open(format=FORMAT,
                     channels=CHANNELS,
                     rate=RATE,
                     input=True,
                     frames_per_buffer=CHUNK)
-    
+
     print("* recording")
-    
+
     frames = []
-    
+
     for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
         data = stream.read(CHUNK)
         frames.append(data)
-    
+
     print("* done recording")
-    
+
     stream.stop_stream()
     stream.close()
     p.terminate()
-    
+
     wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
     wf.setnchannels(CHANNELS)
     wf.setsampwidth(p.get_sample_size(FORMAT))
     wf.setframerate(RATE)
     wf.writeframes(b''.join(frames))
     wf.close()
-    
+
+
 def convert():
     srate2, data2 = wav.read('output.wav')
     X = fft(data2)
     N = len(data2)
-    X_mag = abs(X)*2.0/N
-    freq = fftfreq(len(data2),1.0/srate2)
-    #plot (freq, X_mag)
+    X_mag = abs(X) * 2.0 / N
+    freq = fftfreq(len(data2), 1.0 / srate2)
+    # plot (freq, X_mag)
     return freq, X_mag
-    
-    
+
+
 def getFreq(frecuencia, magnitud):
     maximo = max(magnitud)
-    for i in range(0,len(magnitud)):
-        if magnitud[i]==maximo:
+    for i in range(0, len(magnitud)):
+        if magnitud[i] == maximo:
             return abs(frecuencia[i])
-            
-def afinador():
-    cuerda = input("Seleccione la cuerda que desea afinar ")
+
+
+def afinador(cuerda):
+    #cuerda = input("Seleccione la cuerda que desea afinar ")
     frecuenciaTeorica = notasGuitarra[cuerda]
     print "Toque la cuerda en este momento"
-    record(3)    
+    record(5)
     f, mag = convert()
     frecuenciaReal = getFreq(f, mag)
     if (frecuenciaReal - frecuenciaTeorica) < -1:
-        print "muy abajo ",frecuenciaReal - frecuenciaTeorica
+        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda es muy alta"
     elif (frecuenciaReal - frecuenciaTeorica) > 1:
-        print "muy alto ",frecuenciaReal - frecuenciaTeorica
+        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda es muy baja"
     else:
-        print "nice"
-            
-
-    
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda esta perfecta"
