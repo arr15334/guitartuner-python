@@ -119,8 +119,8 @@ def afinador(cuerda):
     f, mag = convert(cuerda)
     frecuenciaReal = getFreq(f, mag)
     if (frecuenciaReal - frecuenciaTeorica) < -3:
-        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda es muy baja"
+        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La cuerda esta muy baja"
     elif (frecuenciaReal - frecuenciaTeorica) > 3:
-        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda es muy alta"
+        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La  esta  muy alta"
     else:
-        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La frecuencia en la que se encuentra se cuerda esta perfecta"
+        return frecuenciaReal, frecuenciaReal, frecuenciaTeorica,"La cuerda esta perfecta"
