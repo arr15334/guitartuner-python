@@ -30,7 +30,7 @@ class Ui_MainWindow(QtGui.QMainWindow):
         self.gridFrame = QtGui.QFrame(self.centralwidget)
         self.gridFrame.setGeometry(QtCore.QRect(80, 100, 961, 391))
         self.gridFrame.setStyleSheet(_fromUtf8("background-color: rgb(214, 214, 214);\n"
-"background-image: url(:/newPrefix/D:/UVG/g70.png);"))
+"background-image: url(g70.png);"))
         self.gridFrame.setObjectName(_fromUtf8("gridFrame"))
         self.gridLayout = QtGui.QGridLayout(self.gridFrame)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
